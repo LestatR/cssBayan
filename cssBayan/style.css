@@ -43,7 +43,7 @@ h1 {
 }
 
 .meme {
-    width: 50%;
+    width: 60%;
     margin: 1rem auto 0;
     border-top: 1px solid gray;
     padding-top: 1rem;
@@ -59,37 +59,32 @@ h1 {
 
 .meme-label:hover {
     background-color: #fff;
-    transition: all 1s;
-}
-
-.meme-label::after {
-    content: "\276F";
-    width: 1em;
-    height: 1em;
-    text-align: center;
-    transition: all .35s;
+    transition: all 0.5s ease-in-out;
+    box-shadow: 0px 0px 8px black;
 }
 
 .meme input {
     position: absolute;
     opacity: 0;
-    z-index: -1;
+    z-index: -10;
 }
 
 .meme-content {
     max-height: 0;
     padding: 0 1em;
     background: white;
-    transition: all .5s;
-    display: none;
+    transition: all .3s ease-in-out;
+    transform: scale(0);
+    transition: all 0.3s ease-out;
 }
 
 .meme-close {
     display: flex;
     justify-content: flex-end;
     padding: 1em;
-    font-size: 0.75em;
+    font-size: 1.5em;
     cursor: pointer;
+    z-index: -2;
 }
 
 .meme-close:hover {
@@ -103,10 +98,17 @@ h1 {
     background-repeat: no-repeat;
     background-position: center;
     overflow: hidden;
+    cursor: pointer;
+}
+
+.meme-img:hover {
+    filter: brightness(115%);
+    transition: all 0.5s ease-in-out;
+    box-shadow: 0px 0px 8px black;
 }
 
 input:checked+.meme-label {
-    background: green;
+    background: lightsalmon;
 }
 
 input:checked+.meme-label::after {
@@ -117,13 +119,35 @@ input:checked~.meme-content {
     max-height: 100vh;
     padding: 1em;
     display: block;
-    transition: all 1s;
+    transform: scale(1.0);
+    transition: all 0.3s ease-out;
 }
 
-@media screen and (min-width: 320px) and (max-width: 768px) {
-    .meme {
-        width: 90%;
+.memes:hover .meme-label::after {
+    content: "\276F";
+    width: 1em;
+    height: 1em;
+    text-align: center;
+    transition: all .35s ease-in-out;
+}
+
+@media screen and (min-width: 569px) and (max-width: 1180px) {
+    .memes {
+        width: 60%;
         font-size: 1.2rem;
+    }
+    h1 {
+        font-size: 2.3rem;
+    }
+}
+
+@media screen and (min-width: 120px) and (max-width: 568px) {
+    .memes {
+        width: 90%;
+        font-size: 1.0rem;
         font-style: normal;
+    }
+    h1 {
+        font-size: 2rem;
     }
 }
